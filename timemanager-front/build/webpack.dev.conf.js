@@ -22,6 +22,9 @@ const devWebpackConfig = merge(baseWebpackConfig, {
 
   // these devServer options should be customized in /config/index.js
   devServer: {
+    allowedHosts: [
+      '.azurewebsites.net'
+  ],
     disableHostCheck: true,
     clientLogLevel: 'warning',
     historyApiFallback: {
@@ -32,8 +35,8 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     hot: true,
     contentBase: false, // since we use CopyWebpackPlugin.
     compress: true,
-    host: HOST || config.dev.host,
-    port: PORT || config.dev.port,
+    host: '0.0.0.0',// HOST || config.dev.host,
+    port: 8081,// PORT || config.dev.port,
     open: config.dev.autoOpenBrowser,
     overlay: config.dev.errorOverlay
       ? { warnings: false, errors: true }
