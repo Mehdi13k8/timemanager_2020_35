@@ -5,6 +5,7 @@ const prodEnv = require('./prod.env')
 module.exports = merge(prodEnv, {
   NODE_ENV: '"development"',
   devServer: {
-    proxy: 'http://localhost:4000'
+    // proxy: 'http://localhost:4000'
+    disableHostCheck: true
   }
 })

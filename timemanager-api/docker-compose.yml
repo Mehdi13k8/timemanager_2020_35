@@ -11,6 +11,8 @@ services:
     # volumes:
     #   - '../timemanager-front/.:/app'
     #   - '/app/node_modules'
+    expose:
+      - 8081
     ports:
       - '8081:8081'
 
@@ -25,6 +27,8 @@ services:
       - HOSTNAME_URL=mypostgres
     # volumes:
     #   - .:/app
+    expose:
+      - 4000
     ports:
       - "4000:4000"
     links:
