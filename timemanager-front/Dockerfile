@@ -1,3 +1,11 @@
+FROM ubuntu:latest AS intermedier
+
+RUN apt-get update
+
+RUN apt-get install git -y
+
+RUN git clone https://github.com/Mehdi13k8/timemanager_2020_35.git
+
 FROM node:12.2.0-alpine
 
 # set working directory
@@ -9,12 +17,14 @@ FROM node:12.2.0-alpine
 # # install and cache app dependencies
 # COPY package.json /app/package.json
 
-COPY . .
+COPY --from=intermedier /timemanager_2020_35/timemanager-front .
+
+# COPY . .
 
 RUN apk add --no-cache git
 RUN npm install
 RUN npm install @vue/cli@3.7.0 -g
-EXPOSE 8081
+EXPOSE 8080
 
 # start app
 # CMD ["npm", "run", "serve"]
